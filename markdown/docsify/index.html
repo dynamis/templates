@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Single HTML to show Markdown with Docsify</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Description" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
+    />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      window.$docsify = {
+        name: "Site/Page name",
+        basePath: "/",
+        homepage: "README.md",
+        loadSidebar: false,
+        // hideSidebar: true,
+        loadNavbar: false,
+        // logo: "logo.svg",
+        // themeColor: "#00A4F4",
+        markdown: {
+          // https://docsify.js.org/#/markdown
+          gfm: true,
+          smartypants: false,
+        },
+      };
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  </body>
+</html>
