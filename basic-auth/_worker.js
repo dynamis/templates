@@ -17,12 +17,18 @@ const BASIC_PASS = 'password';
 async function handleRequest(request, env) {
   // return env.ASSETS.fetch(request);
   
-  const { protocol, pathname } = new URL(request.url);
+  // https://developer.mozilla.org/en-US/docs/Web/API/URL/URL
+  const { protocol, hostname, pathname } = new URL(request.url);
 
   // In the case of a Basic authentication, the exchange
   // MUST happen over an HTTPS (TLS) connection to be secure.
   if ('https:' !== protocol || 'https' !== request.headers.get('x-forwarded-proto')) {
     throw new BadRequestException('Please use a HTTPS connection.');
+  }
+
+  // allow access to public dir without basic auth
+  if (pathname.startsWith("/public/")) {
+    return env.ASSETS.fetch(request);
   }
 
   if (request.headers.has('Authorization')) {
